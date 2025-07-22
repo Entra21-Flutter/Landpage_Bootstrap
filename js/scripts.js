@@ -23,12 +23,16 @@ window.addEventListener('DOMContentLoaded', event => {
     // Shrink the navbar when page is scrolled
     document.addEventListener('scroll', navbarShrink);
 
+    
+
+    
+
     // Activate Bootstrap scrollspy on the main nav element
     const mainNav = document.body.querySelector('#mainNav');
     if (mainNav) {
         new bootstrap.ScrollSpy(document.body, {
             target: '#mainNav',
-            rootMargin: '0px 0px -40%',
+            offset:80
         });
         
     };
@@ -47,3 +51,22 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
+    
+
+  (function() {
+    emailjs.init("service_VagaJa"); // User ID
+  })();
+
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm('service_VagaJa', 'template_VagaJa', this)
+      .then(function() {
+        alert('Mensagem enviada com sucesso!');
+      }, function(error) {
+        alert('Erro ao enviar. Tente novamente.');
+        console.log(error);
+      });
+  });
+

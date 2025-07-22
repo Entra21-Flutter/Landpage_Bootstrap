@@ -82,10 +82,23 @@
 }
 
 .teamContainer{
-  width: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .personBox{
   width: 30%;
+  margin: 5px;
+}
+
+.personBox img{
+  max-width: 200px;
+  height: auto;
+  border-radius: 20%;
+}
+
+#team{
+  text-align: center;
 }
 
 #logoImg{
