@@ -80,7 +80,6 @@
     scroll-behavior: smooth;
   }
 }
-
 .teamContainer{
   display: flex;
   flex-wrap: wrap;
@@ -88,17 +87,35 @@
 }
 .personBox{
   width: 30%;
-  margin: 5px;
+  margin: 10px 15px 15px 15px;
 }
 
 .personBox img{
-  max-width: 200px;
+  width: 210px;
   height: auto;
   border-radius: 20%;
 }
 
+
 #team{
   text-align: center;
+}
+@media (max-width: 990px) {
+  .teamContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .personBox {
+    width: 48%;   /* 2 por linha, com pequeno espaço */
+    margin: 1%;
+  }
+  .personBox img {
+    max-width: 100%;
+    height: auto;
+  }
+  #navbarResponsive img{
+    display: none;
+  }
 }
 
 #logoImg{
