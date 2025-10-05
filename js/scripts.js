@@ -1,4 +1,3 @@
-
 window.addEventListener('DOMContentLoaded', event => {
 
     // Navbar shrink function
@@ -70,3 +69,32 @@ window.addEventListener('DOMContentLoaded', event => {
       });
   });
 
+function calcularIdade(ano, mes) {
+    const hoje = new Date();
+    let idade = hoje.getFullYear() - ano;
+    if ((hoje.getMonth() + 1) < mes) {
+        idade--;
+    }
+    return idade;
+}
+
+function atualizarIdadesEquipe() {
+    const integrantes = [
+        { nome: "bruno", ano: 2005, mes: 5 },
+        { nome: "caio", ano: 2004, mes: 8 },
+        { nome: "eloyse", ano: 2008, mes: 11 },
+        { nome: "guilherme", ano: 2008, mes: 11 },
+        { nome: "marcos", ano: 2005, mes: 2 },
+        { nome: "seridon", ano: 1983, mes: 4 }
+    ];
+
+    integrantes.forEach(integrante => {
+        const span = document.getElementById(`idade-${integrante.nome}`);
+        if (span) {
+            span.textContent = calcularIdade(integrante.ano, integrante.mes) + " anos";
+        }
+    });
+}
+
+// Chama ao carregar o site
+window.addEventListener('DOMContentLoaded', atualizarIdadesEquipe);
