@@ -37,6 +37,7 @@
                     <li class="nav-item"><a class="nav-link" href="#services">Serviços</a></li>
                     <li class="nav-item"><a class="nav-link" href="#team">Equipe</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#validacao">Validação</a></li>
                 </ul>
             </div>
         </div>
@@ -45,8 +46,11 @@
     <header class="masthead">
         <div class="container px-4 px-lg-5 h-100">
             <div class="row gx-4 gx-lg-5 h-50 align-items-center justify-content-center text-center">
-                <div class="col-lg-8 align-self-end">
-                    <h1 class="text-white font-weight-bold">Conheça o VagaJá</h1>
+                <div class="col-lg-8 align-self-end d-flex">
+                    <div class="">
+                        <h1 class="text-white font-weight-bold">Conheça o</h1>
+                        <img src="/assets/img/LogoExtensoVagaJa.png" alt="" class="w-50">
+                    </div>
                     <hr class="divider" />
                 </div>
                 <div class="col-lg-8 align-self-baseline">
@@ -210,7 +214,7 @@
                         <!-- has successfully submitted-->
                         <div class="d-none" id="submitSuccessMessage">
                             <div class="text-center mb-3">
-                                <div class="fw-bolder">Formulário enviado com sucesso!</div>
+                                <div class="fw-bolder">Mensagem enviada com sucesso!</div>
                                 <br />
                             </div>
                         </div>
@@ -219,12 +223,29 @@
                         <!-- This is what your users will see when there is-->
                         <!-- an error submitting the form-->
                         <div class="d-none" id="submitErrorMessage">
-                            <div class="text-center text-danger mb-3">Erro ao enviar o Formulário</div>
+                            <div class="text-center text-danger mb-3">Erro ao enviar a mensagem</div>
                         </div>
                         <!-- Submit Button-->
-                        <div class="d-grid"><button class="btn btn-primary btn-xl disabled" id="submitButton"
-                                type="submit">Enviar</button></div>
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Enviar</button>
+                        </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- pesquisa -->
+    <section class="page-section" id="validacao">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6 text-center">
+                    <h2 class="mt-0">Pesquisa de Validação</h2>
+                    <hr class="divider" />
+                    <p>Ajude-nos a validar esse projeto! Responda nossa pesquisa de validação.</p>
+                    <img src="/assets/img/Qr-code_forms.png" alt="QR Code da Pesquisa" class="mb-3 " />
+                    <div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIXZ_0z3bf7ErNhA2WsEE0feKcpuz3Y0yllhc0LMPqukuqzQ/viewform?usp=preview" target="_blank" class="btn btn-primary btn-xl">Responder Pesquisa</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -243,7 +264,31 @@
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
+    <script>
+        emailjs.init("vWnubukGdInJvrWw8"); // Public Key do EmailJS
 
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        emailjs.send("service_VagaJa", "template_VagaJa", {
+            from_name: name,
+            from_email: email,
+            message: message
+        })
+        .then(function() {
+            document.getElementById('submitSuccessMessage').classList.remove('d-none');
+            document.getElementById('submitErrorMessage').classList.add('d-none');
+            document.getElementById('contactForm').reset();
+        }, function(error) {
+            document.getElementById('submitErrorMessage').classList.remove('d-none');
+            document.getElementById('submitSuccessMessage').classList.add('d-none');
+        });
+    });
+    </script>
 </body>
 
 </html>
